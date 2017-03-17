@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>iOS开发框架搭建系列文章 | 闲来随笔，风轻云淡</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="此文主要阐述自己在iOS开发中的一些心得，主要在搭建开发框架相关，本文会通过几个章节，从0开始记录。">
+  <meta name="description" content="此文主要阐述模块化开发的一些理解，主要是搭建开发框架相关，本文会通过，封装公用模块、路由跳转解耦模块、gitLab模块管理、cocopods私有仓库几方面禅述，也仅是自己和参考别人的一些总结，欢迎大家一起交流。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发框架搭建系列文章">
 <meta property="og:url" content="http://yoursite.com/02/16/iOS开发框架搭建系列文章/index.html">
 <meta property="og:site_name" content="闲来随笔，风轻云淡">
-<meta property="og:description" content="此文主要阐述自己在iOS开发中的一些心得，主要在搭建开发框架相关，本文会通过几个章节，从0开始记录。">
-<meta property="og:updated_time" content="2017-02-16T06:43:26.000Z">
+<meta property="og:description" content="此文主要阐述模块化开发的一些理解，主要是搭建开发框架相关，本文会通过，封装公用模块、路由跳转解耦模块、gitLab模块管理、cocopods私有仓库几方面禅述，也仅是自己和参考别人的一些总结，欢迎大家一起交流。">
+<meta property="og:updated_time" content="2017-03-17T08:15:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发框架搭建系列文章">
-<meta name="twitter:description" content="此文主要阐述自己在iOS开发中的一些心得，主要在搭建开发框架相关，本文会通过几个章节，从0开始记录。">
+<meta name="twitter:description" content="此文主要阐述模块化开发的一些理解，主要是搭建开发框架相关，本文会通过，封装公用模块、路由跳转解耦模块、gitLab模块管理、cocopods私有仓库几方面禅述，也仅是自己和参考别人的一些总结，欢迎大家一起交流。">
   
     <link rel="alternative" href="/atom.xml" title="闲来随笔，风轻云淡" type="application/atom+xml">
   
@@ -155,8 +155,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>此文主要阐述自己在iOS开发中的一些心得，主要在搭建开发框架相关，本文会通过几个章节，从0开始记录。</p>
+        <p>此文主要阐述模块化开发的一些理解，主要是搭建开发框架相关，本文会通过，封装公用模块、路由跳转解耦模块、gitLab模块管理、cocopods私有仓库几方面禅述，也仅是自己和参考别人的一些总结，欢迎大家一起交流。</p>
 <a id="more"></a>
+<h1 id="封装公用模块"><a href="#封装公用模块" class="headerlink" title="封装公用模块"></a>封装公用模块</h1><p>随着公司业务越来越多，就会出现多个项目或者工程并行的情况，其中一些公用模块的管理和维护就成了一个极耗成本的事情，像一些公用的工具模块和业务模块，我们可以封装起来统一管理。像常用的网络请求、相机相册调用、支付工具、分享等等。</p>
+<h1 id="路由跳转解耦模块"><a href="#路由跳转解耦模块" class="headerlink" title="路由跳转解耦模块"></a>路由跳转解耦模块</h1><p>当我们把业务抽离出来以后，页面间还是相互耦合的，对于页面间的解耦我们采用每个模块依赖一个中间模块进行交互跳转处理。我们会为每一个页面定一个跳转链接类似（showjoyshop://page.sh/…），页面打开时直接通过url进行查找，相互依赖也通过url进行依赖。我们不仅可以满足从外部跳转的一些需求如从浏览器通过url打开APP某个页面，而且在APP里的一些H5页面也可以利用该url进行查找跳转到某个原生页面。</p>
+<h1 id="gitLab模块管理"><a href="#gitLab模块管理" class="headerlink" title="gitLab模块管理"></a>gitLab模块管理</h1><p>封装好的模块怎么管理，我们这里公司内部搭建的gitLab仓库来管理。</p>
+<p>GitLab 是一个用于仓库管理系统的开源项目。使用Git作为代码管理工具，并在此基础上搭建起来的web服务。</p>
+<p>可通过Web界面进行访问公开的或者私人项目。它拥有与Github类似的功能，能够浏览源代码，管理缺陷和注释。可以管理团队对仓库的访问，它非常易于浏览提交过的版本并提供一个文件历史库。团队成员可以利用内置的简单聊天程序(Wall)进行交流。它还提供一个代码片段收集功能可以轻松实现代码复用。</p>
+<h1 id="cocopods私有仓库"><a href="#cocopods私有仓库" class="headerlink" title="cocopods私有仓库"></a>cocopods私有仓库</h1><p>目前我这里是通过cocopods对各个模块进行依赖管理，采用公有库加私有库进行管理。像AFNetworking、SDWebImage这些开源的公有库，加上自己公司封装好的一些业务模块和组件模块用私有库进行管理，这里主要讲解私有库的使用。</p>
+
       
 
       
@@ -169,11 +176,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">iOS</a>
         		</li>
       		
 		</ul>
@@ -364,7 +371,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">weex</a>
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -372,7 +379,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">框架</a>
+                <a href="javascript:void(0)" class="js-tag color5">weex</a>
               </li>
             
             <div class="clearfix"></div>
